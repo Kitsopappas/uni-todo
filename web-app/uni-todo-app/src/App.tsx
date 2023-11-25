@@ -30,6 +30,7 @@ function App() {
       updatedAt: new Date().toISOString(),
     };
     dispatch(insertTodoEntity(todoEntity));
+    setInput("");
   }, [input, dispatch]);
 
   const completeTodoEntity = useCallback(

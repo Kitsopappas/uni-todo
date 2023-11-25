@@ -21,7 +21,7 @@ export const todoSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(insertTodoEntity.fulfilled, (state, action) => {
-      state.todos.push(action.meta.arg);
+      state.todos.push(action.payload);
     });
     builder.addCase(getTodoEntities.fulfilled, (state, action) => {
       state.todos = action.payload;
@@ -30,15 +30,16 @@ export const todoSlice = createSlice({
       const todoIndex = state.todos.findIndex(
         (todo) => todo.id === action.meta.arg.id
       );
-      if (todoIndex > 0) {
+      if (todoIndex >= 0) {
         state.todos[todoIndex] = action.meta.arg;
       }
     });
     builder.addCase(deleteTodoEntity.fulfilled, (state, action) => {
+      console.log("ef3f3f", state.todos, action);
       const todoIndex = state.todos.findIndex(
         (todo) => todo.id === action.meta.arg.id
       );
-      if (todoIndex > 0) {
+      if (todoIndex >= 0) {
         state.todos.splice(todoIndex, 1);
       }
     });

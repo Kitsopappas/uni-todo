@@ -40,7 +40,7 @@ namespace UniTodo.Controllers
         }
 
         [HttpPost("InsertTodo")]
-        public async Task<HttpStatusCode> InsertTodo([FromBody] TodoDTO todo)
+        public async Task<ActionResult<TodoEntity>> InsertTodo([FromBody] TodoDTO todo)
         {
             var entity = new TodoEntity()
             {
@@ -53,7 +53,7 @@ namespace UniTodo.Controllers
             DBContext.TodoEntity.Add(entity);
             await DBContext.SaveChangesAsync();
 
-            return HttpStatusCode.Created;
+            return entity;
         }
 
         [HttpPatch("UpdateTodo")]
