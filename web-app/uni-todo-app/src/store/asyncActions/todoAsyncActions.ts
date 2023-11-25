@@ -14,7 +14,7 @@ export const insertTodoEntity = createAsyncThunk(
 export const getTodoEntities = createAsyncThunk(
   "todo/getTodoEntities",
   async (_arg) => {
-    const result = await axios.get(`${env.webApi}//GetTodo`);
+    const result = await axios.get(`${env.webApi}/GetTodo`);
     return result.data;
   }
 );
