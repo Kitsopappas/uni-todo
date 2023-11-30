@@ -46,3 +46,17 @@ Once nodejs is setup, navigate to `web-app/uni-todo-app` and run the following c
 
 ![webapp](./readme-img/web-app.png?raw=true "web-app")
 
+## Mobile Application setup
+
+[Download an install Android Studio](https://developer.android.com/studio) and install it following the setup proceedure.
+Open the project inside the folder `mobile/android`.
+
+![android-studio](./readme-img/android-studio.png?raw=true "android-studio")
+
+Open your terminal and run the following command to enable development on our localhost server
+
+`adb reverse tcp:7046 tcp:7046` 
+
+Runn the application 
+
+![mobile-app](./readme-img/mobile-app.png?raw=true "mobile-app")
