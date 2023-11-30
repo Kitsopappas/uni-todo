@@ -67,7 +67,7 @@ fun TodoScreen(
                 onConfirmation = {
                     viewModel.triggerDialog(false)
                     viewModel.addToDoItem(state.newItemText)
-                    state.newItemText = ""
+                    viewModel.updateInput("")
                 },
                 dialogTitle = "Add a new ToDo item",
             )
