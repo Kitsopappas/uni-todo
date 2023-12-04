@@ -28,8 +28,6 @@ fun TodoScreen(
     viewModel: ToDoViewModel = viewModel()
 ) {
     val state by viewModel.uiState.collectAsState()
-//    var text by remember { mutableStateOf("") }
-//    val openAlertDialog = remember { mutableStateOf(false) }
     ToDoAppTheme{
     Scaffold(
         topBar = {
