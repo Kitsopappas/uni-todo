@@ -5,7 +5,7 @@ import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
 data class ToDoState(
-    var newItemText: String = "",
+    var newItemText: String = "My initial text",
     var openAddItemDialg: Boolean = false,
     var contentItems: ImmutableList<ToDoItem> = persistentListOf()
 )
