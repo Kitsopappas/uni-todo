@@ -15,12 +15,12 @@ const TodoListItem = ({
     <>
       <div className="flex mb-4 items-center">
         {!todoItem.done && (
-          <p className="w-full text-grey-darkest">{todoItem.name}</p>
+          <p className="w-full text-grey-darkest">{todoItem.name}<p>Created on {new Date(todoItem.createdAt).toLocaleDateString()}</p></p>
         )}
 
         {todoItem.done && (
           <p className="w-full line-through text-grey-darkest">
-            {todoItem.name}
+            {todoItem.name}<p>Created on {new Date(todoItem.createdAt).toLocaleDateString()}</p>
           </p>
         )}
 
