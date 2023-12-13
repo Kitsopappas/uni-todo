@@ -11,6 +11,13 @@ const formatDateTime = (date: string): string => {
   return DateTime.fromISO(date).toLocaleString();
 };
 
+const calculateDaysAgo = (date: string): string => {
+  const updatedAt = DateTime.fromISO(date);
+  const currentDate = DateTime.now();
+  const daysAgo = Math.floor(currentDate.diff(updatedAt, 'days').days);
+return daysAgo.toString();
+};
+
 const TodoListItem = ({
   todoItem,
   onCompleteTodo,
@@ -21,14 +28,21 @@ const TodoListItem = ({
       <div className="flex mb-4 items-center">
         {!todoItem.done && (
           <p className="w-full text-grey-darkest">{todoItem.name}
-          <p className="text-gray-500 text-sm">Created on {formatDateTime(todoItem.createdAt)}</p>
+          
+          <div className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-gray-500 hover:bg-red">
+            <p><span className="text-xs">Created on {formatDateTime(todoItem.createdAt)}</span></p>
+            <span className="text-xs">Last update: {calculateDaysAgo(todoItem.updatedAt)} Days ago</span>
+          </div>
           </p>
         )}
 
         {todoItem.done && (
           <p className="w-full line-through text-grey-darkest">
             {todoItem.name}
-            <p className="text-gray-500 text-sm">Created on {formatDateTime(todoItem.createdAt)}</p>
+            <div className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-gray-500 hover:bg-red">
+            <p><span className="text-xs">Created on {formatDateTime(todoItem.createdAt)}</span></p>
+            <span className="text-xs">Last update: {calculateDaysAgo(todoItem.updatedAt)} Days ago</span>
+          </div>
           </p>
         )}
 
