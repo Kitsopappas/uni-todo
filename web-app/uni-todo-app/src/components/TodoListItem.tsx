@@ -1,10 +1,15 @@
 import { ITodoEntity } from "../store/interfaces/ITodoEntity";
+import { DateTime } from 'luxon';
+
 
 interface ITodoListItemProps {
   todoItem: ITodoEntity;
   onCompleteTodo: () => void;
   onDeleteTodo: () => void;
 }
+const formatDateTime = (date: string): string => {
+  return DateTime.fromISO(date).toLocaleString();
+};
 
 const TodoListItem = ({
   todoItem,
@@ -15,12 +20,15 @@ const TodoListItem = ({
     <>
       <div className="flex mb-4 items-center">
         {!todoItem.done && (
-          <p className="w-full text-grey-darkest">{todoItem.name}<p>Created on {new Date(todoItem.createdAt).toLocaleDateString()}</p></p>
+          <p className="w-full text-grey-darkest">{todoItem.name}
+          <p className="text-gray-500 text-sm">Created on {formatDateTime(todoItem.createdAt)}</p>
+          </p>
         )}
 
         {todoItem.done && (
           <p className="w-full line-through text-grey-darkest">
-            {todoItem.name}<p>Created on {new Date(todoItem.createdAt).toLocaleDateString()}</p>
+            {todoItem.name}
+            <p className="text-gray-500 text-sm">Created on {formatDateTime(todoItem.createdAt)}</p>
           </p>
         )}
 
