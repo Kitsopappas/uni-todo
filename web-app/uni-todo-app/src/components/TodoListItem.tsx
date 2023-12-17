@@ -1,6 +1,6 @@
 import { ITodoEntity } from "../store/interfaces/ITodoEntity";
 import { DateTime } from 'luxon';
-
+import { useCallback, useMemo } from 'react';
 
 interface ITodoListItemProps {
   todoItem: ITodoEntity;
@@ -11,11 +11,16 @@ const formatDateTime = (date: string): string => {
   return DateTime.fromISO(date).toLocaleString();
 };
 
-const calculateDaysAgo = (date: string): string => {
-  const updatedAt = DateTime.fromISO(date);
-  const currentDate = DateTime.now();
-  const daysAgo = Math.floor(currentDate.diff(updatedAt, 'days').days);
-return daysAgo.toString();
+const useCalculateDaysAgo = (date: string) => {
+  
+  const updatedAt = useMemo(() => DateTime.fromISO(date), [date]);
+
+  const calculateDaysAgo = useCallback(() => {
+    const currentDate = DateTime.now();
+    return Math.floor(currentDate.diff(updatedAt, 'days').days).toString();
+  }, [updatedAt]);
+
+  return calculateDaysAgo();
 };
 
 const TodoListItem = ({
@@ -23,6 +28,8 @@ const TodoListItem = ({
   onCompleteTodo,
   onDeleteTodo,
 }: ITodoListItemProps) => {
+  const daysAgo = useCalculateDaysAgo(todoItem.updatedAt);
+
   return (
     <>
       <div className="flex mb-4 items-center">
@@ -31,7 +38,7 @@ const TodoListItem = ({
           
           <div className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-gray-500 hover:bg-red">
             <p><span className="text-xs">Created on {formatDateTime(todoItem.createdAt)}</span></p>
-            <span className="text-xs">Last update: {calculateDaysAgo(todoItem.updatedAt)} Days ago</span>
+            <span className="text-xs">Last update: {daysAgo} Days ago</span>
           </div>
           </p>
         )}
@@ -41,7 +48,7 @@ const TodoListItem = ({
             {todoItem.name}
             <div className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-gray-500 hover:bg-red">
             <p><span className="text-xs">Created on {formatDateTime(todoItem.createdAt)}</span></p>
-            <span className="text-xs">Last update: {calculateDaysAgo(todoItem.updatedAt)} Days ago</span>
+            <span className="text-xs">Last update: {daysAgo} Days ago</span>
           </div>
           </p>
         )}
