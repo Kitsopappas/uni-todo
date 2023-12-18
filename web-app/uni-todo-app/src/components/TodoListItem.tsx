@@ -1,38 +1,76 @@
 import { ITodoEntity } from "../store/interfaces/ITodoEntity";
+import { DateTime } from 'luxon';
+import { useCallback, useMemo } from 'react';
 
 interface ITodoListItemProps {
   todoItem: ITodoEntity;
   onCompleteTodo: () => void;
   onDeleteTodo: () => void;
 }
+const formatDateTime = (date: string): string => {
+  return DateTime.fromISO(date).toLocaleString();
+};
+
+const useCalculateDaysAgo = (date: string) => {
+  
+  const updatedAt = useMemo(() => DateTime.fromISO(date), [date]);
+
+  const calculateDaysAgo = useCallback(() => {
+    const currentDate = DateTime.now();
+    return Math.floor(currentDate.diff(updatedAt, 'days').days).toString();
+  }, [updatedAt]);
+
+  return calculateDaysAgo();
+};
+
+const useTodoListItem = (todoItem: ITodoEntity, onComplete: () => void, onDelete: () => void) => {
+  const daysAgo = useCalculateDaysAgo(todoItem.updatedAt);
+
+  const completeTodo = useCallback(() => onComplete(), [onComplete]);
+  const deleteTodo = useCallback(() => onDelete(), [onDelete]);
+
+  return { daysAgo, completeTodo, deleteTodo };
+};
 
 const TodoListItem = ({
   todoItem,
   onCompleteTodo,
   onDeleteTodo,
 }: ITodoListItemProps) => {
+  const { daysAgo, completeTodo, deleteTodo } = useTodoListItem(todoItem, onCompleteTodo, onDeleteTodo);
+
   return (
     <>
       <div className="flex mb-4 items-center">
         {!todoItem.done && (
-          <p className="w-full text-grey-darkest">{todoItem.name}</p>
+          <p className="w-full text-grey-darkest">{todoItem.name}
+          
+          <div className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-gray-500 hover:bg-red">
+            <p><span className="text-xs">Created on {formatDateTime(todoItem.createdAt)}</span></p>
+            <span className="text-xs">Last update: {daysAgo} Days ago</span>
+          </div>
+          </p>
         )}
 
         {todoItem.done && (
           <p className="w-full line-through text-grey-darkest">
             {todoItem.name}
+            <div className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-gray-500 hover:bg-red">
+            <p><span className="text-xs">Created on {formatDateTime(todoItem.createdAt)}</span></p>
+            <span className="text-xs">Last update: {daysAgo} Days ago</span>
+          </div>
           </p>
         )}
 
         <button
-          onClick={() => onCompleteTodo()}
+          onClick={completeTodo}
           className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green"
         >
           ✅
         </button>
 
         <button
-          onClick={() => onDeleteTodo()}
+          onClick={deleteTodo}
           className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red"
         >
           🗑️
