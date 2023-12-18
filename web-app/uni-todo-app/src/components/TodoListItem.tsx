@@ -23,12 +23,21 @@ const useCalculateDaysAgo = (date: string) => {
   return calculateDaysAgo();
 };
 
+const useTodoListItem = (todoItem: ITodoEntity, onComplete: () => void, onDelete: () => void) => {
+  const daysAgo = useCalculateDaysAgo(todoItem.updatedAt);
+
+  const completeTodo = useCallback(() => onComplete(), [onComplete]);
+  const deleteTodo = useCallback(() => onDelete(), [onDelete]);
+
+  return { daysAgo, completeTodo, deleteTodo };
+};
+
 const TodoListItem = ({
   todoItem,
   onCompleteTodo,
   onDeleteTodo,
 }: ITodoListItemProps) => {
-  const daysAgo = useCalculateDaysAgo(todoItem.updatedAt);
+  const { daysAgo, completeTodo, deleteTodo } = useTodoListItem(todoItem, onCompleteTodo, onDeleteTodo);
 
   return (
     <>
@@ -54,14 +63,14 @@ const TodoListItem = ({
         )}
 
         <button
-          onClick={() => onCompleteTodo()}
+          onClick={completeTodo}
           className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green"
         >
           ✅
         </button>
 
         <button
-          onClick={() => onDeleteTodo()}
+          onClick={deleteTodo}
           className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red"
         >
           🗑️
