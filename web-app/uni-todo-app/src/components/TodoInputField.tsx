@@ -2,13 +2,20 @@ import { useCallback, useState } from "react";
 import { ITodoEntity } from "../store/interfaces/ITodoEntity";
 import { insertTodoEntity } from "../store/asyncActions/todoAsyncActions";
 import { useAppDispatch } from "../hooks";
+import { AlertWindow } from "./AlertWindow";
 
 export const TodoInputField = () => {
   const [input, setInput] = useState("");
+  const [error, setError] = useState("");
 
   const dispatch = useAppDispatch();
 
   const addTodoEntity = useCallback(() => {
+    if(!input.trim()) {
+      setError("TODOs cannot be empty!");
+      return;
+    }
+    
     const todoEntity: ITodoEntity = {
       name: input,
       done: false,
@@ -17,22 +24,31 @@ export const TodoInputField = () => {
     };
     dispatch(insertTodoEntity(todoEntity));
     setInput("");
+    setError("");
   }, [input, dispatch]);
 
   return (
-    <div className="flex mt-4">
-      <input
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
-        placeholder="Add Todo"
-      ></input>
-      <button
-        onClick={addTodoEntity}
-        className="flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-teal"
-      >
-        Add
-      </button>
+    <div>
+      {error && <AlertWindow message={error} />}
+      <div className="flex mt-4">
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyPress={(e) => {
+            if(e.key === "Enter") {
+              addTodoEntity();
+            }
+          }}
+          className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
+          placeholder="Add Todo"
+          ></input>
+        <button
+          onClick={addTodoEntity}
+          className="flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-teal"
+          >
+          Add
+        </button>
+      </div>
     </div>
   );
 };
