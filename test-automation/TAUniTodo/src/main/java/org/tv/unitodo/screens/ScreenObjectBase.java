@@ -1,6 +1,6 @@
-package org.example.screens;
+package org.tv.unitodo.screens;
 
-import org.example.helpers.LocatorHelper;
+import org.tv.unitodo.helpers.LocatorHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 

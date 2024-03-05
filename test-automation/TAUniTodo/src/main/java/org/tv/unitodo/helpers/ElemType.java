@@ -1,4 +1,4 @@
-package org.example.helpers;
+package org.tv.unitodo.helpers;
 
 public interface ElemType {
     String BUTTON = "button";

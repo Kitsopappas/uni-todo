@@ -1,13 +1,14 @@
-package org.example;
+package org.tv.unitodo;
 
-import org.example.screens.CreateTodoScreenObject;
-import org.example.screens.CreateTodoScreenObjectBuilder;
+import org.tv.unitodo.screens.CreateTodoScreenObject;
+import org.tv.unitodo.screens.CreateTodoScreenObjectBuilder;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import java.util.Random;
 
 public class CreateNewTodoTest {

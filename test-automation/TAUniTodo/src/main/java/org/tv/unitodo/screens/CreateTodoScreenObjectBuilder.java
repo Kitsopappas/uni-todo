@@ -1,4 +1,4 @@
-package org.example.screens;
+package org.tv.unitodo.screens;
 
 import org.openqa.selenium.WebDriver;
 

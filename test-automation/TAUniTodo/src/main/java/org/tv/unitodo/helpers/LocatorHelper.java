@@ -1,4 +1,4 @@
-package org.example.helpers;
+package org.tv.unitodo.helpers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

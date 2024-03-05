@@ -1,13 +1,11 @@
-package org.example.screens;
+package org.tv.unitodo.screens;
 
-import org.example.helpers.ElemType;
+import org.tv.unitodo.helpers.ElemType;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class CreateTodoScreenObject extends ScreenObjectBase {
     private final String newTodo;
