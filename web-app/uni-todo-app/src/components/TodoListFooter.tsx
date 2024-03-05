@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { useAppSelector } from "../hooks";
 
 export const TodoListFooter = () => {
@@ -12,7 +12,15 @@ export const TodoListFooter = () => {
     return { doneTask, pendingTasks };
   }, [todos]);
 
-  const { doneTask, pendingTasks } = getTasksCount();
+  // const { doneTask, pendingTasks } = getTasksCount();
+
+  const { doneTask, pendingTasks } = useMemo(() => {
+    let doneTask = 0;
+    let pendingTasks = 0;
+    todos.forEach(({ done }) => (done ? doneTask++ : pendingTasks++));
+
+    return { doneTask, pendingTasks };
+  }, [todos]);
 
   return (
     <div className="flex justify-between w-full lg:w-3/4 lg:max-w-lg border p-2 flex  text-xs">

@@ -20,8 +20,8 @@ export const todoSlice = createSlice({
   initialState: todoInitialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(insertTodoEntity.fulfilled, (state, action) => {
-      state.todos.push(action.payload);
+    builder.addCase(insertTodoEntity.fulfilled, (state, {payload}) => {
+      state.todos.push(payload);
     });
     builder.addCase(getTodoEntities.fulfilled, (state, action) => {
       state.todos = action.payload;

@@ -14,7 +14,7 @@ namespace UniTodo.Controllers
             this.DBContext = DBContext;
         }
 
-        [HttpGet("GetTodo")]
+        [HttpGet("todo")]
         public async Task<ActionResult<List<TodoDTO>>> Get()
         {
             var List = await DBContext.TodoEntity.Select(
@@ -39,7 +39,7 @@ namespace UniTodo.Controllers
             }
         }
 
-        [HttpPost("InsertTodo")]
+        [HttpPost("todo")]
         public async Task<ActionResult<TodoEntity>> InsertTodo([FromBody] TodoDTO todo)
         {
             var entity = new TodoEntity()
@@ -56,7 +56,7 @@ namespace UniTodo.Controllers
             return entity;
         }
 
-        [HttpPatch("UpdateTodo")]
+        [HttpPatch("todo")]
         public async Task<HttpStatusCode> UpdateTodo([FromBody] TodoDTO todo)
         {
             var entity = await DBContext.TodoEntity.FirstOrDefaultAsync(s => s.Id == todo.Id);
@@ -76,7 +76,7 @@ namespace UniTodo.Controllers
             
         }
 
-        [HttpDelete("DeleteTodo/{id}")]
+        [HttpDelete("todo/{id}")]
         public async Task<HttpStatusCode> DeleteTodo(int Id)
         {
             var entity = await DBContext.TodoEntity.FirstOrDefaultAsync(s => s.Id == Id);

@@ -34,8 +34,12 @@ const TodoListBody = () => {
     [dispatch]
   );
 
+  if (todos.length === 0) {
+    return <></>;
+  }
+
   return (
-    <>
+    <div data-testid="ta-main-list-todo">
       {todos.map((d: ITodoEntity) => {
         return (
           <TodoListItem
@@ -45,7 +49,7 @@ const TodoListBody = () => {
           />
         );
       })}
-    </>
+    </div>
   );
 };
 

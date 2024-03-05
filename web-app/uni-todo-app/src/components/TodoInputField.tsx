@@ -41,9 +41,11 @@ export const TodoInputField = () => {
           }}
           className="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
           placeholder="Add Todo"
+          data-testid="ta-main-input-todo"
           ></input>
         <button
           onClick={addTodoEntity}
+          data-testid="ta-main-button-todo"
           className="flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-teal"
           >
           Add
