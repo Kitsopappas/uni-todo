@@ -51,6 +51,5 @@ public class CreateNewTodoTest {
             salt.append(SALTCHARS.charAt(index));
         }
         return salt.toString();
-
     }
 }

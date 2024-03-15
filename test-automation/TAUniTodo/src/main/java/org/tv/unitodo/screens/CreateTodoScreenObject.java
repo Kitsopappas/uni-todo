@@ -7,16 +7,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Objects;
+
 public class CreateTodoScreenObject extends ScreenObjectBase {
     private final String newTodo;
 
-    public CreateTodoScreenObject(WebDriver driver, String newTodo) {
+    public CreateTodoScreenObject(WebDriver driver, String todo) {
         super(driver);
-        this.newTodo = newTodo;
+        this.newTodo = Objects.requireNonNullElse(todo, "Default");
     }
 
     public void typeOnInput() {
-        WebElement inputElement = getCreateTodoInput();
+        WebElement inputElement = locator.elementBy(ElemType.INPUT, "ta-main-input-todo");
         inputElement.sendKeys(newTodo);
     }
 
