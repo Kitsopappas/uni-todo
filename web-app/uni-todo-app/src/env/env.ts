@@ -1,3 +1,3 @@
 export const env = {
-  webApi: "https://localhost:7046",
+  webApi: "http://localhost:7046",
 };

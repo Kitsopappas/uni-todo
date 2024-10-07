@@ -43,6 +43,7 @@ const TodoListBody = () => {
       {todos.map((d: ITodoEntity) => {
         return (
           <TodoListItem
+            key={d.id}
             todoItem={d}
             onCompleteTodo={() => completeTodoEntity(d)}
             onDeleteTodo={() => removeTodoEntity(d)}

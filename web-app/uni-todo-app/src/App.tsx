@@ -18,15 +18,13 @@ function App() {
   }, [dispatch, todos.length]);
 
   return (
-    <>
-      <div className="h-100 w-full flex flex-col items-center justify-center bg-teal-lightest font-sans">
+      <div className="h-screen w-full flex flex-col items-center justify-center bg-teal-lightest font-sans bg-gray-100">
         <div className="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
           <TodoListHeader />
           <TodoListBody />
         </div>
         <TodoListFooter />
       </div>
-    </>
   );
 }
 
