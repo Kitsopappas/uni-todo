@@ -18,7 +18,7 @@ public class TodoController {
     private Mapper mapper;
 
     @GetMapping("/todo")
-    public List<TodoDTO> getAuthors() {
+    public List<TodoDTO> getTodos() {
         return mapper.toDtoList(service.listAll());
     }
 
@@ -33,7 +33,7 @@ public class TodoController {
     }
 
     @DeleteMapping("/todo/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable Integer id) {
         service.delete(id);
     }
 }

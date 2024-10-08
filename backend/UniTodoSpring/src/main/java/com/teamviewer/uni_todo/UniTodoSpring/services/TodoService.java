@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,12 +29,12 @@ public class TodoService {
         return todoRepository.save(todo);
     }
 
-    public TodoDomain get(Long id) {
+    public TodoDomain get(Integer id) {
         final Optional<TodoDomain> todo = todoRepository.findById(id);
         return todo.orElse(null);
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
         todoRepository.deleteById(id);
     }
 }

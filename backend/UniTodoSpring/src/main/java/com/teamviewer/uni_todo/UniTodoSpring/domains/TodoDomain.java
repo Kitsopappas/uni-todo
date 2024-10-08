@@ -31,7 +31,6 @@ public class TodoDomain {
     @Column(name="DeletedAt")
     private LocalDateTime deletedAt;
 
-
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
