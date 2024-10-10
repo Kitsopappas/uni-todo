@@ -1,3 +1,4 @@
 export const env = {
-  webApi: "http://localhost:7046",
+  webApi: "https://localhost:7046",
+  springApi: "http://localhost:7045"
 };

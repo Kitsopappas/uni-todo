@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build unitodo",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                "${workspaceFolder}/backend/UniTodo/UniTodo/UniTodo.csproj"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "build spring project",
+            "type": "shell",
+            "command": "mvn clean package",
+            "group": "build",
+            "cwd": "${workspaceFolder}/backend/UniTodoSpring",
+            "problemMatcher": ["$javac"],
+            "detail": "Build the Spring Boot project using Maven"
+          }
+    ]
+}

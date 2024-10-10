@@ -35,7 +35,6 @@ export const todoSlice = createSlice({
       }
     });
     builder.addCase(deleteTodoEntity.fulfilled, (state, action) => {
-      console.log("ef3f3f", state.todos, action);
       const todoIndex = state.todos.findIndex(
         (todo) => todo.id === action.meta.arg.id
       );

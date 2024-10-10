@@ -16,19 +16,19 @@ public class TodoDomain {
     @Column(name="Id")
     private int id;
 
-    @Column(name="Name")
+    @Column
     private String name;
 
-    @Column(name="Done")
+    @Column
     private boolean done;
 
-    @Column(name="CreatedAt", nullable = false, updatable = false)
+    @Column()
     private LocalDateTime createdAt;
 
-    @Column(name="UpdatedAt", nullable = false, updatable = false)
+    @Column()
     private LocalDateTime updatedAt;
 
-    @Column(name="DeletedAt")
+    @Column
     private LocalDateTime deletedAt;
 
     @PrePersist
