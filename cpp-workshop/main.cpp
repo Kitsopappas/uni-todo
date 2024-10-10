@@ -1,67 +1,70 @@
-#include <iostream>
-#include "Engineer.h"
-#include "Recruiter.h"
-#include "Company.h"
+#include "Company/Company.h"
+#include "Company/HR_department.h"
 #include "JobPositions.cpp"
-#include "HR_department.h"
+#include "Observers/Engineer.h"
+#include "Observers/Recruiter.h"
+#include <iostream>
 #include <memory>
 
-int main() 
+int main()
 {
-    auto hr = std::make_shared<HR::HR_department>();
-    
-    //Create companies
-    Company TeamViewer("TeamViewer", hr);
-    Company Google("Google", hr);
-    Company Microsoft("Microsoft", hr);
-    Company Amazon("Amazon", hr);
+	auto hr_TV = std::make_shared<HR::HR_department>();
+	auto hr_G = std::make_shared<HR::HR_department>();
+	auto hr_M = std::make_shared<HR::HR_department>();
+	auto hr_A = std::make_shared<HR::HR_department>();
 
-    //Create applicants
-    auto applicant_1 = std::make_shared<Engineer>("Geek");
-    auto applicant_2 = std::make_shared<Engineer>("Nerd");
-    auto applicant_3 = std::make_shared<Engineer>("Dev");
+	// Create companies
+	Company TeamViewer("TeamViewer", hr_TV);
+	Company Google("Google", hr_G);
+	Company Microsoft("Microsoft", hr_M);
+	Company Amazon("Amazon", hr_A);
 
-    auto applicant_4 = std::make_shared<Recruiter>("Davit");
-    auto applicant_5 = std::make_shared<Recruiter>("Zlatozara");
+	// Create applicants
+	auto applicant_1 = std::make_shared<Engineer>("Geek");
+	auto applicant_2 = std::make_shared<Engineer>("Nerd");
+	auto applicant_3 = std::make_shared<Engineer>("Dev");
 
-    //Subscribe to interesting companies
-    applicant_1->SubscribeForJobPositions(TeamViewer);
-    applicant_1->SubscribeForJobPositions(Google);
+	auto applicant_4 = std::make_shared<Recruiter>("Davit");
+	auto applicant_5 = std::make_shared<Recruiter>("Zlatozara");
 
-    applicant_2->SubscribeForJobPositions(TeamViewer);
-    applicant_2->SubscribeForJobPositions(Microsoft);
-    applicant_2->SubscribeForJobPositions(Amazon);
+	// Subscribe to interesting companies
+	applicant_1->SubscribeForJobPositions(TeamViewer);
+	applicant_1->SubscribeForJobPositions(Google);
 
-    applicant_3->SubscribeForJobPositions(TeamViewer);
-    applicant_3->SubscribeForJobPositions(Amazon);
-    applicant_3->SubscribeForJobPositions(Google);
+	applicant_2->SubscribeForJobPositions(TeamViewer);
+	applicant_2->SubscribeForJobPositions(Microsoft);
+	applicant_2->SubscribeForJobPositions(Amazon);
 
-    applicant_4->SubscribeForJobPositions(TeamViewer);
-    
-    applicant_5->SubscribeForJobPositions(TeamViewer);
+	applicant_3->SubscribeForJobPositions(TeamViewer);
+	applicant_3->SubscribeForJobPositions(Amazon);
+	applicant_3->SubscribeForJobPositions(Google);
 
-    //Companies start creating Job Positions
-    CreateJobPositions(TeamViewer, 3);
-    CreateJobPositions(Google, 4);
-    CreateJobPositions(Microsoft, 2);
-    CreateJobPositions(Amazon, 1);
+	applicant_4->SubscribeForJobPositions(TeamViewer);
 
-    //Companies publish their jobs
-    TeamViewer.PublishJobs();
-    Google.PublishJobs();
-    Microsoft.PublishJobs();
-    Amazon.PublishJobs();
+	applicant_5->SubscribeForJobPositions(TeamViewer);
 
-    //Delete applications
-    applicant_1->UnsubscribeForJobPositions(Google);
-    applicant_2->UnsubscribeForJobPositions(TeamViewer);
-    applicant_2->UnsubscribeForJobPositions(Microsoft);
+	// Companies start creating Job Positions
+	CreateJobPositions(TeamViewer, 3);
+	CreateJobPositions(Google, 4);
+	CreateJobPositions(Microsoft, 2);
+	CreateJobPositions(Amazon, 1);
 
-    //Companies publish their jobs
-    TeamViewer.PublishJobs();
-    Google.PublishJobs();
-    Microsoft.PublishJobs();
-    Amazon.PublishJobs();
+	// Companies publish their jobs
+	TeamViewer.PublishJobs();
+	Google.PublishJobs();
+	Microsoft.PublishJobs();
+	Amazon.PublishJobs();
 
-    return 0;
+	// Delete applications
+	applicant_1->UnsubscribeForJobPositions(Google);
+	applicant_2->UnsubscribeForJobPositions(TeamViewer);
+	applicant_2->UnsubscribeForJobPositions(Microsoft);
+
+	// Companies publish their jobs
+	TeamViewer.PublishJobs();
+	Google.PublishJobs();
+	Microsoft.PublishJobs();
+	Amazon.PublishJobs();
+
+	return 0;
 }

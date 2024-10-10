@@ -3,13 +3,13 @@ project(cpp-workshop-ioannina VERSION 0.1.0)
 
 # Add all the necessary source files for the executable
 add_executable(cpp-workshop-ioannina 
-    HR_department.cpp
-    Company.cpp
-    Observer.cpp
-    Subject.cpp
-    CompanyObserver.cpp
-    Engineer.cpp 
-    Recruiter.cpp
+    Company/HR_department.cpp
+    Company/Company.cpp
+    Observer_Pattern/Observer.cpp
+    Observer_Pattern/Subject.cpp
+    Observers/CompanyObserver.cpp
+    Observers/Engineer.cpp 
+    Observers/Recruiter.cpp
     main.cpp
 )
 
