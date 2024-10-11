@@ -12,27 +12,7 @@ const TodoListBody = () => {
 
   const dispatch = useAppDispatch();
 
-  const completeTodoEntity = useCallback(
-    (todoEntity: ITodoEntity) => {
-      dispatch(
-        updateTodoEntity({
-          id: todoEntity.id,
-          done: true,
-          updatedAt: new Date().toISOString(),
-          name: todoEntity.name,
-          createdAt: todoEntity.createdAt,
-        })
-      );
-    },
-    [dispatch]
-  );
-
-  const removeTodoEntity = useCallback(
-    (todoEntity: ITodoEntity) => {
-      dispatch(deleteTodoEntity(todoEntity));
-    },
-    [dispatch]
-  );
+  
 
   if (todos.length === 0) {
     return <></>;
@@ -45,8 +25,7 @@ const TodoListBody = () => {
           <TodoListItem
             key={d.id}
             todoItem={d}
-            onCompleteTodo={() => completeTodoEntity(d)}
-            onDeleteTodo={() => removeTodoEntity(d)}
+            
           />
         );
       })}
