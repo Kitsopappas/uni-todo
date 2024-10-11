@@ -12,10 +12,14 @@ import java.util.List;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class TodoController {
+    private final TodoService service;
+    private final Mapper mapper;
+
     @Autowired
-    private TodoService service;
-    @Autowired
-    private Mapper mapper;
+    public TodoController(TodoService service, Mapper mapper) {
+        this.service = service;
+        this.mapper = mapper;
+    }
 
     @GetMapping("/todo")
     public List<TodoDTO> getTodos() {
