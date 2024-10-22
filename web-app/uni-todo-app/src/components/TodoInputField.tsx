@@ -46,7 +46,7 @@ export const TodoInputField = () => {
         <button
           onClick={addTodoEntity}
           data-testid="ta-main-button-todo"
-          className="flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-teal"
+          className="flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-gray-500 hover:bg-teal"
           >
           Add
         </button>
