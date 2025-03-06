@@ -1,28 +1,29 @@
 
 ## About The Project
 
-This is a simple example of how someone can create a very simple TODO app for web and mobile app. Technologies used are C# for the backend, ReactJS for the web application, Jetpack Compose for the Android App and SwiftUI for the iOS App.
+This is a simple example of how someone can create a very simple TODO app for web and mobile app. Technologies used are C# or Java for the backend, ReactJS for the web application, Jetpack Compose for the Android App and SwiftUI for the iOS App.
+You will also find a cool test automation project in here if you want to test it out
 
 Here's why:
 * Help students understand how end to end applications are build
-* Provide a URL cotaining a setup to play with
-* Using newest technologies from the industry
+* Provide a URL containing a setup to play with
+* Using newest technologies and industry standards
 
 ## Backend setup
 
-[Download Visual Studio](https://visualstudio.microsoft.com/downloads/) and install in on your machine.
+[Download Visual Studio](https://visualstudio.microsoft.com/downloads/) and install it on your machine.
 
-[Download Docker](https://www.docker.com/products/docker-desktop/) and install in on your machine.
+[Download Docker](https://www.docker.com/products/docker-desktop/) and install it on your machine.
 
 Once docker is installed navigate to the root folder of this project and run this command `docker-compose -f mysql-dev-init-compose.yml up`
 
 This will create a container containing mysql and will setup a default db user, db database and the db table needed for our application to run. It should look like this inside the docker app once done.
 ![Alt text](./readme-img/container.png?raw=true "Docker container")
 
-Open Visual Studio and open the project under `backend/UniTodo`. You should see the following structure.
+Open Visual Studio and open the project under `backend/UniTodo`. You should see the following structure. IF YOU WANT TO PLAY WITH C#
 ![Alt text](./readme-img/vs-backend.png?raw=true "vs")
 
-### Running the backend
+### Running the C# backend
 
 Make sure that the docker container is running and you have the correct project opened on Visual Studio. Press the play button to build and run the application. Once the build finishes a webpage will open containing your local setup and 4 actions available from the backend. More info about swagger [here](https://swagger.io/)
 
@@ -30,11 +31,18 @@ Using this you will be able to test the operations available.
 
 ![Alt text](./readme-img/swagger.png?raw=true "swagger")
 
+### Running the Java Spring backend
+- Download the Java JDK
+- Download Intellij from JetBrains
+- Open the project from `backend/UniTodoSpring` folder on JetBrains IntelliJ
+
+Make sure that the docker container is running and you have the correct project opened on IntelliJ. Press the play button to build and run the application. Once the build finishes you will be able to test and run your backend application.
+
 ## Web Application setup
 
 [Download and install nodejs](https://nodejs.org/en/) (lts)
 
-> For better future support and ease of use it is recomended to install nodejs through NVM (Node Version Manager). This will enable you to switch between versions depending on the projects you are running.
+> For better future support and ease of use it is recommended to install nodejs through NVM (Node Version Manager). This will enable you to switch between versions depending on the projects you are running.
 
 Once nodejs is setup, navigate to `web-app/uni-todo-app` and run the following commands:
 
