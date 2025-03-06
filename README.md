@@ -22,6 +22,10 @@ Here's why:
 
 [Download Docker](https://www.docker.com/products/docker-desktop/) and install it on your machine.
 
+> For PostgreSql
+Once docker is installed navigate to the root folder of this project and run this command `docker-compose -f postgresql-dev-init-compose.yml up`
+
+> For MySql
 Once docker is installed navigate to the root folder of this project and run this command `docker-compose -f mysql-dev-init-compose.yml up`
 
 This will create a container containing mysql and will setup a default db user, db database and the db table needed for our application to run. It should look like this inside the docker app once done.
