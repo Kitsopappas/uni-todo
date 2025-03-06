@@ -71,6 +71,8 @@ Once nodejs is setup, navigate to `web-app/uni-todo-app` and run the following c
 - Import the collection from the folder `backend/Collection`
 - Make sure you completed all the steps for docker and backend setup before you run anything
 
+![insomnia](./readme-img/insomnia.png?raw=true "insomnia")
+
 ## Using DBeaver for Database Administration
 - [Download DBeaver](https://dbeaver.io/) or any other client you know or use
 - Create a new connection
