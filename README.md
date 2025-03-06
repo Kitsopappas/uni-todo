@@ -22,10 +22,10 @@ Here's why:
 
 [Download Docker](https://www.docker.com/products/docker-desktop/) and install it on your machine.
 
-> For PostgreSql
+> For PostgreSql:
 Once docker is installed navigate to the root folder of this project and run this command `docker-compose -f postgresql-dev-init-compose.yml up`
 
-> For MySql
+> For MySql:
 Once docker is installed navigate to the root folder of this project and run this command `docker-compose -f mysql-dev-init-compose.yml up`
 
 This will create a container containing mysql and will setup a default db user, db database and the db table needed for our application to run. It should look like this inside the docker app once done.
@@ -58,6 +58,25 @@ Once nodejs is setup, navigate to `web-app/uni-todo-app` and run the following c
 `yarn start` this will start your application and open your browser running the local version of the web application.
 
 ![webapp](./readme-img/web-app.png?raw=true "web-app")
+
+## Add a new table on the db
+- Choose the correct initdb folder you want (initdb for MySql or initdb_postgresql for PostgreSql)
+- open the 01.sql file
+- Edit the contents to add the new tables etc
+- Delete the container from docker and run the docker compose command once again
+
+## Testing the endpoints
+- [Download insomnia](https://insomnia.rest/) and install it to your machine (Alternatively you can use postman)
+- Open insomnia and select import project
+- Import the collection from the folder `backend/Collection`
+- Make sure you completed all the steps for docker and backend setup before you run anything
+
+## Using DBeaver for Database Administration
+- [Download DBeaver](https://dbeaver.io/) or any other client you know or use
+- Create a new connection
+- Select the database type you want to use (e.g. PostgreSql or MySql)
+- Add the credentials based on the `xxx-dev-init-compose.yaml` files
+- Open the connection
 
 ### Running the C# backend
 
