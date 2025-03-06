@@ -38,6 +38,8 @@ Using this you will be able to test the operations available.
 
 Make sure that the docker container is running and you have the correct project opened on IntelliJ. Press the play button to build and run the application. Once the build finishes you will be able to test and run your backend application.
 
+![JetBrains](./readme-img/jetbrains-app.png?raw=true "jetbrains-app")
+
 ## Web Application setup
 
 [Download and install nodejs](https://nodejs.org/en/) (lts)

@@ -15,7 +15,7 @@ public class Mapper {
 
     public List<TodoDTO> toDtoList(Iterable<TodoDomain> todos) {
         return StreamSupport.stream(todos.spliterator(), false)
-                .map(this::toDto) // Replace with the appropriate mapping logic
+                .map(this::toDto)
                 .collect(Collectors.toList());
     }
 

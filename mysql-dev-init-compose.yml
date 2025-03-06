@@ -1,5 +1,3 @@
-# Use root/example as user/password credentials
-# Local development of remiot ap
 # Run it using docker-compose -f mysql-dev-init-compose.yml up
 version: '3.2'
 

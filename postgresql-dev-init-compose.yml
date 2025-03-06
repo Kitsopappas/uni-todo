@@ -1,0 +1,16 @@
+# Run it using docker-compose -f postgresql-dev-init-compose.yml up
+version: "3.2"
+
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - 54320:5432
+    container_name: uni-todo-postgres
+    environment:
+      POSTGRES_USER: unitodouser
+      POSTGRES_PASSWORD: UniTodo1234
+      POSTGRES_DB: unitodo
+    volumes:
+      - ./initdb_postgresql:/docker-entrypoint-initdb.d
