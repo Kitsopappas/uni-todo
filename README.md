@@ -41,6 +41,8 @@ Open Visual Studio and open the project under `backend/UniTodo`. You should see 
 
 Make sure that the docker container is running and you have the correct project opened on IntelliJ. Press the play button to build and run the application. Once the build finishes you will be able to test and run your backend application.
 
+> If you want to use a different database (e.g. mysql) open the application.properties and change the active profile accordingly
+
 ![JetBrains](./readme-img/jetbrains-app.png?raw=true "jetbrains-app")
 
 ## Web Application setup
